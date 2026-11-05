@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111316">
+  <meta name="description" content="Meet Sunburst 2.6, a new image model. Explore images made with it.">
+  <title>Images 2.6 - Showcase</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --paper: #111316;
+      --ink: #f1eee7;
+      --muted: #b0afa9;
+      --line: #383b3e;
+      --accent: #f28a5b;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at 82% 16%, rgba(47, 57, 68, .34), transparent 35%), var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    .page-shell { width: min(1440px, 100%); margin: 0 auto; padding: 0 clamp(22px, 5.2vw, 76px); }
+
+    .site-header {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .header-link::after { position: absolute; right: -24px; content: "↗"; color: var(--accent); font-size: 18px; transition: transform .2s ease; }
+    .header-link:hover::after { transform: translate(2px, -2px); }
+
+    .hero {
+      min-height: min(760px, calc(100svh - 84px));
+      display: grid;
+      grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr);
+      align-items: center;
+      gap: clamp(40px, 7vw, 104px);
+      padding-top: clamp(54px, 8vw, 112px);
+      padding-bottom: clamp(72px, 9vw, 130px);
+    }
+    .hero-copy { max-width: 540px; align-self: start; padding: 12px 0; }
+    h1 {
+      max-width: 7.2ch;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(64px, 8.6vw, 124px);
+      font-weight: 400;
+      letter-spacing: -.075em;
+      line-height: .91;
+      text-wrap: balance;
+    }
+    .hero-copy p {
+      max-width: 390px;
+      margin: 30px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 1.6vw, 20px);
+      line-height: 1.55;
+    }
+    .primary-link {
+      min-height: 54px;
+      width: fit-content;
+      margin-top: 34px;
+      padding: 0 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      background: var(--accent);
+      color: #171412;
+      font-size: 15px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: background-color .2s ease, transform .2s ease;
+    }
+    .primary-link:hover { background: #ffae83; border-color: #ffae83; transform: translateY(-2px); }
+    .primary-link span { color: #171412; font-size: 19px; line-height: 1; }
+
+    .hero-art { min-width: 0; position: relative; margin: 0; }
+    .image-frame { overflow: hidden; background: #191b1e; border: 1px solid rgba(241, 238, 231, .12); border-radius: 2px; }
+    .image-frame img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .hero-main { aspect-ratio: 1.2; box-shadow: 0 28px 80px rgba(0, 0, 0, .25); }
+    .hero-main img { object-position: center; }
+
+    .gallery-section { padding: clamp(74px, 10vw, 140px) 0 clamp(88px, 12vw, 168px); border-top: 1px solid var(--line); }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: clamp(30px, 4vw, 54px);
+    }
+    h2 { margin: 0; font-family: var(--serif); font-size: clamp(42px, 5.4vw, 72px); font-weight: 400; letter-spacing: -.065em; line-height: .98; }
+    .section-heading p { max-width: 330px; margin: 0 0 4px; color: var(--muted); font-size: 15px; line-height: 1.65; }
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: start;
+      gap: clamp(16px, 2.4vw, 34px);
+    }
+    .gallery figure { min-width: 0; margin: 0; }
+    .gallery figure:first-child { padding-top: 8%; }
+    .gallery .image-frame { aspect-ratio: 16 / 9; }
+    .gallery img { transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+    .gallery figure:hover img { transform: scale(1.025); }
+    figcaption { margin-top: 14px; color: var(--muted); font-size: 14px; }
+    .prompt-toggle, .prompt-copy {
+      min-height: 42px;
+      padding: 0 17px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color .2s ease, border-color .2s ease;
+    }
+    .prompt-toggle { margin-top: 16px; }
+    .prompt-toggle:hover, .prompt-copy:hover { border-color: var(--accent); background: #25282a; }
+    .prompt-panel {
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: #191b1e;
+    }
+    .prompt-panel[hidden] { display: none; }
+    .prompt-panel textarea {
+      width: 100%;
+      min-height: 180px;
+      display: block;
+      resize: none;
+      padding: 12px;
+      border: 1px solid #46494b;
+      border-radius: 2px;
+      background: #111316;
+      color: var(--ink);
+      font: 14px/1.55 var(--sans);
+    }
+    .prompt-panel .prompt-copy { margin-top: 12px; }
+    button:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .prompt-status { min-height: 1em; margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+
+    .closing {
+      padding: clamp(54px, 8vw, 100px) 0;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+    .closing p { margin: 0; font-size: clamp(21px, 3vw, 34px); letter-spacing: -.055em; font-weight: 540; }
+    .closing .primary-link { margin: 0; flex: 0 0 auto; }
+    footer { min-height: 72px; border-top: 1px solid var(--line); display: flex; align-items: center; color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 900px) {
+      .site-header { min-height: 72px; }
+      .hero {
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 42px;
+        padding-top: 68px;
+        padding-bottom: 82px;
+      }
+      h1 { max-width: 8ch; font-size: clamp(64px, 13vw, 92px); }
+      .hero-copy p { margin-top: 22px; }
+      .hero-art { display: block; aspect-ratio: auto; }
+      .hero-main { aspect-ratio: auto; }
+      .hero-main img { height: auto; }
+      .hero-side-top, .hero-side-bottom { display: none; }
+      .gallery-section { padding-top: 74px; }
+      .section-heading { align-items: start; flex-direction: column; }
+      .gallery { gap: 18px; }
+      .gallery figure:first-child { padding-top: 28px; }
+      .closing { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 420px) {
+      .page-shell { padding-right: 18px; padding-left: 18px; }
+      .hero { padding-top: 56px; }
+      .gallery { grid-template-columns: 1fr; gap: 32px; }
+      .gallery figure:first-child { padding-top: 0; }
+    }
+    .image-lightbox[hidden] { display: none; }
+    .image-lightbox {
+      position: fixed;
+      z-index: 1000;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: clamp(20px, 5vw, 64px);
+      background: rgba(8, 9, 10, .78);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      cursor: zoom-out;
+    }
+    .image-lightbox img {
+      display: block;
+      max-width: min(100%, 1600px);
+      max-height: 88svh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 24px 100px rgba(0, 0, 0, .55);
+      cursor: default;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: clamp(16px, 3vw, 32px);
+      right: clamp(16px, 3vw, 32px);
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--ink);
+      font: 300 28px/1 var(--sans);
+      cursor: pointer;
+    }
+    .gallery .image-frame img { cursor: zoom-in; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header page-shell">
+    <a class="header-link" href="#gallery">Explore the images</a>
+  </header>
+
+  <main id="top" class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <h1 id="page-title">Meet Images 2.6</h1>
+        <p>OpenAI introduced <a href="https://openai.com/index/introducing-images-2-6/" target="_blank" rel="noopener noreferrer">Images 2.6</a> today, see for yourself how it's performing.</p>
+        <a class="primary-link" href="#gallery">View the gallery <span aria-hidden="true">↘</span></a>
+      </div>
+      <figure class="hero-art" data-image="1" aria-label="Image 1 made with Sunburst 2.6">
+        <div class="image-frame hero-main"><img src="1.png" alt="Editorial portrait of a man holding an open book against a teal backdrop" fetchpriority="high"></div>
+        <button class="prompt-toggle" type="button" aria-expanded="false">Prompt</button>
+        <div class="prompt-panel" hidden role="region" aria-label="Image 1 prompt">
+          <textarea readonly aria-label="Prompt for image 1"></textarea>
+          <button class="prompt-copy" type="button">Copy</button>
+          <p class="prompt-status" aria-live="polite"></p>
+        </div>
+      </figure>
+    </section>
+
+    <section id="gallery" class="gallery-section" aria-labelledby="gallery-title">
+      <div class="section-heading">
+        <h2 id="gallery-title">The images</h2>
+        <p>Examples were made with Sunburst 2.6 on High quality, using references and custom skill systems, on API connection.</p>
+      </div>
+      <div class="gallery">
+        <figure data-image="2">
+          <div class="image-frame"><img src="2.png" alt="Image example made with Sunburst 2.6" loading="lazy"></div>
+          <button class="prompt-toggle" type="button" aria-expanded="false">Prompt</button>
+          <div class="prompt-panel" hidden role="region" aria-label="Image 2 prompt">
+            <textarea readonly aria-label="Prompt for image 2"></textarea>
+            <button class="prompt-copy" type="button">Copy</button>
+            <p class="prompt-status" aria-live="polite"></p>
+          </div>
+        </figure>
+        <figure data-image="3">
+          <div class="image-frame"><img src="3.png" alt="Image example made with Sunburst 2.6" loading="lazy"></div>
+          <button class="prompt-toggle" type="button" aria-expanded="false">Prompt</button>
+          <div class="prompt-panel" hidden role="region" aria-label="Image 3 prompt">
+            <textarea readonly aria-label="Prompt for image 3"></textarea>
+            <button class="prompt-copy" type="button">Copy</button>
+            <p class="prompt-status" aria-live="polite"></p>
+          </div>
+        </figure>
+        <figure data-image="4">
+          <div class="image-frame"><img src="4.png" alt="Image example made with Sunburst 2.6" loading="lazy"></div>
+          <button class="prompt-toggle" type="button" aria-expanded="false">Prompt</button>
+          <div class="prompt-panel" hidden role="region" aria-label="Image 4 prompt">
+            <textarea readonly aria-label="Prompt for image 4"></textarea>
+            <button class="prompt-copy" type="button">Copy</button>
+            <p class="prompt-status" aria-live="polite"></p>
+          </div>
+        </figure>
+        <figure data-image="5">
+          <div class="image-frame"><img src="5.png" alt="Illustration of a woman’s profile surrounded by decorative, flowing hair" loading="lazy"></div>
+          <button class="prompt-toggle" type="button" aria-expanded="false">Prompt</button>
+          <div class="prompt-panel" hidden role="region" aria-label="Image 5 prompt">
+            <textarea readonly aria-label="Prompt for image 5"></textarea>
+            <button class="prompt-copy" type="button">Copy</button>
+            <p class="prompt-status" aria-live="polite"></p>
+          </div>
+        </figure>
+        <figure data-image="6">
+          <div class="image-frame"><img src="6.png" alt="Pixel-art landscape with clouds and rolling green hills" loading="lazy"></div>
+          <button class="prompt-toggle" type="button" aria-expanded="false">Prompt</button>
+          <div class="prompt-panel" hidden role="region" aria-label="Image 6 prompt">
+            <textarea readonly aria-label="Prompt for image 6"></textarea>
+            <button class="prompt-copy" type="button">Copy</button>
+            <p class="prompt-status" aria-live="polite"></p>
+          </div>
+        </figure>
+        <figure data-image="7">
+          <div class="image-frame"><img src="7.png" alt="Woman standing on a wooden chair in shallow surf, with mountains in the distance" loading="lazy"></div>
+          <button class="prompt-toggle" type="button" aria-expanded="false">Prompt</button>
+          <div class="prompt-panel" hidden role="region" aria-label="Image 7 prompt">
+            <textarea readonly aria-label="Prompt for image 7"></textarea>
+            <button class="prompt-copy" type="button">Copy</button>
+            <p class="prompt-status" aria-live="polite"></p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="closing" aria-label="Explore the image examples">
+      <a class="primary-link" href="#top">Back to the top <span aria-hidden="true">↑</span></a>
+    </section>
+  </main>
+
+  <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Expanded gallery image" hidden>
+    <button class="lightbox-close" type="button" aria-label="Close expanded image">×</button>
+    <img src="1.png" alt="">
+  </div>
+
+  <script>
+    const promptSource = String.raw`
+image 3 prompt:
+generate a broad, observational landscape view: a narrow road winds through open, treeless mountain slopes, with the sky forming a band across the top. The road draws the eye from the pale bend at lower left toward the distant hillside. The scene feels spacious and quiet; no people or vehicles are prominent.
+Photographic diagnosis
+Focus: The road, grassy slopes, and distant terrain appear broadly in focus, with no obvious motion blur.
+Lighting: Natural daylight varies across the hills; cloud cover softens the sky, while patches of sunlight brighten parts of the landscape. The exact light direction is uncertain.
+Tonal: Deep olive-green slopes contrast with lighter grass and a pale, clouded sky; shadows retain some terrain detail.
+Optics: The elevated, wide view shows little obvious distortion. Fine landscape detail remains legible across much of the frame; lens or capture specifics cannot be determined.
+Composition: A wide crop layers the nearby slope, winding road, distant ridge, and sky. The road creates a curved visual path through the open terrain.
+Translation to generation instructions
+Focus: Keep the main landscape and its distant features clearly resolved, with natural, gradual loss of detail only at great distance.
+Lighting: Use plausible outdoor daylight filtered by broken clouds; let sunlight fall unevenly across the terrain, with soft-edged shadows and no artificial background gradient.
+Tonal: Balance pale sky highlights against darker greens, retaining texture in the shadowed hills and avoiding oversaturated color.
+Optics: Choose an elevated viewpoint and a moderately wide, natural perspective; preserve realistic detail without added blur or decorative grain.
+Composition: Use a wide landscape frame with distinct foreground, middle distance, and background; guide the eye through the scene without copying the reference’s specific road placement.
+
+
+image 2 prompt:
+generate a quiet, naturalistic landscape image, centered on a small boat resting on still water. The broad sky and distant shoreline give the frame a spacious, contemplative feel; the boat and its reflection draw the eye, with a few buoys adding small points of color.
+Photographic diagnosis
+Focus: The boat and nearby water are clearly defined; the distant shore is softer, while the reflected shapes blur gently in the water.
+Lighting: Warm light appears to come from the right, catching the boat and buoys; the source and exact time of day are uncertain. The open sky provides softer fill.
+Tonal: Cool blue-green water and sky contrast with warm highlights. The foreground water is darker, while highlights on the boat remain visible.
+Optics: The view feels level with the water, with natural perspective and no obvious distortion or pronounced artificial blur.
+Composition: The boat sits left of center beneath a broad open sky; its reflection leads the eye downward, balanced by the low, distant shoreline.
+Translation to generation instructions
+Focus: Keep the main subject and nearby surface clearly resolved; let distant features soften mildly, without strong artificial bokeh.
+Lighting: Use low, warm directional light from camera-right with soft ambient sky fill; let gentle shadows fall across the subject and keep the background naturally lit.
+Tonal: Preserve warm highlights against cool midtones, retain detail in bright surfaces, and allow foreground shadows to stay deeper without crushing them.
+Optics: Use a level, water-height viewpoint and natural perspective; keep edges clean and avoid added grain or blur.
+Composition: Place the subject off-center in a spacious landscape, with a simple reflection or foreground lead-in and generous negative space.
+Core style: A restrained, spacious waterside photograph that pairs cool, quiet tones with warm directional light and a clearly legible focal subject.
+
+
+image 1 prompt:
+generate a clean, staged editorial portrait: a bespectacled man holding an open book gestures toward the empty space beside him. He is placed on the right, leaving generous teal negative space to the left. The plain backdrop and presentation-like pose suggest an illustrative or educational use rather than a candid moment.
+Photographic diagnosis
+Focus: The person, glasses, clothing, and book appear clearly resolved; the background is smooth, with no obvious strong depth blur.
+Lighting: The subject is evenly lit by apparently soft light, with gentle shadows. The exact source and direction are uncertain.
+Tonal: Saturated teal dominates; dark clothing and the book contrast with the backdrop, while facial and shirt highlights remain visible.
+Optics: The view is near eye level with natural-looking perspective and crisp edges; exact lens and capture settings cannot be determined.
+Composition: A waist-up-to-thigh portrait sits to the right of frame, with the gesture and open book directing attention into broad left-side negative space.
+Translation to generation instructions
+Focus: Keep the face, hands, and featured object crisp; retain a smooth, unobtrusive background without forcing artificial bokeh.
+Lighting: Use a broad, soft source near the camera for even facial and clothing detail, with restrained fill and gentle shadows; keep the background simple and evenly lit.
+Tonal: Preserve a saturated background color, readable dark midtones, and controlled highlights without crushing fabric detail.
+Optics: Use a near-eye-level, medium portrait view with natural perspective and clean, consistent detail.
+Composition: Place the subject off-center, leave useful negative space on one side, and use a natural gesture to connect the subject to that space.
+Core style: A crisp, softly lit, color-blocked editorial portrait that pairs an expressive subject with generous clean negative space.
+
+image 4 prompt:
+generate an image that reads as an intimate, casual environmental portrait: the close, direct viewpoint and visible vehicle interior make the moment feel personal rather than formally staged. The face is the clear focus, with eyes and nearby hair sharply rendered; the background remains recognizable instead of dissolving into strong blur.
+Photographic diagnosis
+Focus: Face and loose hair strands are crisp; the roof, rails, and seat remain visible with only mild softening.
+Lighting: The face is evenly lit with gentle shadows; the exact source and direction are uncertain. The background is somewhat brighter at the left.
+Tonal: Warm, natural midtones dominate. Forehead and cheek highlights are bright but retain detail; clothing and seat provide deep blacks.
+Optics: A close, slightly elevated viewpoint gives the face prominence. Perspective feels near-camera, though the lens is unknown; no obvious grain or strong optical effects are visible.
+Composition: Vertical, close framing centers the face below a broad area of roof; surrounding hair and vehicle details add context.
+Translation to generation instructions
+Focus: Keep the eyes and face crisply resolved, with nearby detail clear and only gentle softening in the more distant setting.
+Lighting: As a proposed interpretation, use broad natural daylight from near the camera, with soft shadows and enough ambient fill to keep the background legible.
+Tonal: Preserve warm, believable midtones, detailed skin highlights, and rich dark areas that still show texture.
+Optics: Use a close portrait viewpoint with natural perspective; avoid exaggerated wide-angle distortion, artificial blur, or added grain.
+Composition: Favor a vertical, intimate environmental portrait with the subject prominent and enough surrounding space to establish the setting, without reproducing the source’s specific pose or arrangement.
+Core transferable DNA: A close, unpolished-feeling portrait that prioritizes a sharply rendered face, gentle daylight, warm restrained color, and a clearly readable environment.
+
+image 5 prompt:
+generate a digital illustration, not a photograph, so photographic cues such as lens behavior, optical blur, and physical light sources are not discernible. The image centers on a woman’s right-facing profile; her dark hair opens into a whimsical, layered world of abstract waves, plants, shells, and small sea-life motifs. The treatment combines bold, flowing shapes with fine hand-drawn hatching and speckled textures. A warm palette of coral, ochre, and cream contrasts with deep navy and muted teal. The white background and generous margins keep the intricate hair silhouette legible. Repeated stock-site watermarks and a footer are visible overlays, not part of the illustration’s style.
+Photographic diagnosis
+Focus: The face and decorative hair are rendered with similarly crisp outlines; no photographic focus falloff is visible.
+Lighting: There are no clear light sources or cast shadows; the shading appears graphic and illustrative.
+Tonal: Cream and white provide the lightest areas, navy the deepest, with saturated warm and cool colors carrying most of the visual emphasis.
+Optics: Lens or camera effects are not applicable; edges are clean, with fine drawn marks and stippling adding texture.
+Composition: A large profile occupies the center-right, while the expansive hair forms an irregular, detailed mass against open white space.
+Translation to generation instructions
+Focus: Keep the profile and decorative elements consistently crisp; use no simulated depth-of-field blur.
+Lighting: Use flat, even illustrated color rather than directional photographic lighting or cast shadows.
+Tonal: Balance pale cream and white with deep navy, then use restrained coral, ochre, and teal accents.
+Optics: Favor clean, defined contours and varied hand-drawn hatching or stippling; avoid lens effects and photographic grain.
+Composition: Use a single side-profile portrait with an imaginative, organically shaped decorative area around the head, balanced by open background; create a new arrangement rather than copying this one.
+
+image 6 prompt:
+generate a pixel-art landscape, not a photograph; camera and lens characteristics are therefore not discernible.
+Photographic diagnosis
+Focus: Cloud shapes and hills have similarly crisp, block-edged pixels; depth is suggested by color layers, not blur.
+Lighting: Cloud tops are pale and their undersides cooler and darker, suggesting overhead daylight; a precise light direction is uncertain.
+Tonal: The cyan-blue sky dominates, with pale cloud highlights, muted turquoise shadows, and dark green hills anchoring the bottom.
+Optics: A straight-on, broad landscape view with clean pixel clusters; no visible grain, lens softness, or perspective distortion.
+Composition: The sky occupies most of the frame; cloud bands cross it, while a low horizon and rolling hills form horizontal layers below.
+Translation to generation instructions
+Focus: Keep the pixel edges and cluster shapes consistently crisp; separate distant layers through color and silhouette, not depth-of-field blur.
+Lighting: Use soft daytime illumination, with brighter cloud tops and gently darker undersides; keep the landscape’s lighting subdued and consistent.
+Tonal: Preserve the blue-cyan sky, light cloud highlights, turquoise midtones, and deep green foreground; use a restrained, clean palette without grain.
+Optics: Use a straight-on wide landscape view and deliberate square-pixel rendering; avoid simulated lens effects or perspective distortion.
+Composition: Let open sky carry the scene, place cloud forms in horizontal groupings, and anchor the lower edge with layered terrain; vary the specific arrangement for an original scene.
+Core style: Calm, airy retro pixel art built from crisp color blocks, layered cloud forms, and gently rolling terrain.
+
+image 7 prompt:
+generate an image that is a full-length environmental portrait with a quiet, editorial feel. A woman in a dark dress stands on a wooden chair in shallow surf; the centered figure and chair contrast with the open bands of water, pale sky, and distant mountains. The unusual perch gives the otherwise calm scene a slightly surreal quality.
+Photographic diagnosis
+Focus: The woman and chair are clearly defined; the distant mountains are softer, likely influenced by distance and atmosphere. The subject remains the main focus.
+Lighting: The light appears broad and diffuse, with no strong directional shadows. The water and background are lit much like the subject.
+Tonal: Pale sky and foam are brightest; the dark dress anchors the shadows. Overall contrast and saturation are restrained, with cool blue-gray surroundings.
+Optics: The vertical, full-body view has a natural perspective without obvious distortion. Exact lens or camera distance cannot be determined.
+Composition: The figure and chair sit near the center, framed by generous open space and horizontal shoreline bands; the chair creates a strong vertical accent.
+Translation to generation instructions
+Focus: Keep the person and nearby details clearly resolved; let distant landscape soften gently with distance, not artificial blur.
+Lighting: Use overcast, diffuse daylight with weak shadows and no strongly separated background lighting.
+Tonal: Keep the sky and water pale, preserve detail in dark clothing, and use muted cool colors with moderate contrast.
+Optics: Use a natural-looking viewpoint and perspective for a full-length environmental portrait; avoid exaggerated wide-angle distortion or added grain.
+Composition: Balance a clearly readable subject against open environmental space, using natural landscape lines without copying the original chair-and-surf arrangement.
+`;
+    const promptHeadings = [...promptSource.matchAll(/^[ \t]*image\s+(\d+)\s+prompt:[ \t]*$/gim)];
+    const prompts = Object.fromEntries(promptHeadings.map((heading, index) => {
+      const start = heading.index + heading[0].length;
+      const end = promptHeadings[index + 1]?.index ?? promptSource.length;
+      return [heading[1], promptSource.slice(start, end).trim()];
+    }));
+    const promptsRequest = Promise.resolve(prompts);
+
+    document.querySelectorAll("[data-image]").forEach((figure) => {
+      const imageNumber = figure.dataset.image;
+      const toggle = figure.querySelector(".prompt-toggle");
+      const panel = figure.querySelector(".prompt-panel");
+      const textarea = panel.querySelector("textarea");
+      const copyButton = panel.querySelector(".prompt-copy");
+      const status = panel.querySelector(".prompt-status");
+
+      toggle.addEventListener("click", async () => {
+        if (!panel.hidden) {
+          panel.hidden = true;
+          toggle.setAttribute("aria-expanded", "false");
+          return;
+        }
+        try {
+          const prompts = await promptsRequest;
+          if (!prompts[imageNumber]) throw new Error("Prompt not found");
+          textarea.value = prompts[imageNumber];
+          status.textContent = "";
+        } catch {
+          textarea.value = "";
+          status.textContent = "No prompt is available for this image.";
+        }
+        panel.hidden = false;
+        toggle.setAttribute("aria-expanded", "true");
+      });
+
+      copyButton.addEventListener("click", async () => {
+        if (!textarea.value) return;
+        try {
+          let copied = false;
+          if (navigator.clipboard && window.isSecureContext) {
+            try {
+              await navigator.clipboard.writeText(textarea.value);
+              copied = true;
+            } catch {
+              // Fall back to selecting the prompt when clipboard permission is unavailable.
+            }
+          }
+          if (!copied) {
+            textarea.focus();
+            textarea.select();
+            copied = document.execCommand("copy");
+            if (copied) {
+              textarea.setSelectionRange(0, 0);
+              textarea.scrollTop = 0;
+              textarea.blur();
+            }
+          }
+          if (!copied) throw new Error("Copy unavailable");
+          status.textContent = "Copied to clipboard.";
+        } catch {
+          status.textContent = "Copy unavailable. Select and copy the prompt text.";
+        }
+      });
+    });
+
+    const lightbox = document.querySelector("#image-lightbox");
+    const lightboxImage = lightbox.querySelector("img");
+    const lightboxClose = lightbox.querySelector(".lightbox-close");
+    let lastFocusedImage = null;
+    let previousBodyOverflow = "";
+
+    function closeLightbox() {
+      if (lightbox.hidden) return;
+      lightbox.hidden = true;
+      document.body.style.overflow = previousBodyOverflow;
+      if (lastFocusedImage) lastFocusedImage.focus({ preventScroll: true });
+    }
+
+    document.querySelectorAll(".gallery .image-frame img").forEach((image) => {
+      image.tabIndex = 0;
+      image.setAttribute("role", "button");
+      image.setAttribute("aria-label", `View full-size image: ${image.alt}`);
+
+      function openLightbox() {
+        lastFocusedImage = image;
+        previousBodyOverflow = document.body.style.overflow;
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.hidden = false;
+        document.body.style.overflow = "hidden";
+        lightboxClose.focus();
+      }
+
+      image.addEventListener("click", openLightbox);
+      image.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openLightbox();
+        }
+      });
+    });
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeLightbox();
+    });
+  </script>
+</body>
+</html>

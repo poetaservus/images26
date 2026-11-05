@@ -1,0 +1,111 @@
+
+image 3 prompt:
+generate a broad, observational landscape view: a narrow road winds through open, treeless mountain slopes, with the sky forming a band across the top. The road draws the eye from the pale bend at lower left toward the distant hillside. The scene feels spacious and quiet; no people or vehicles are prominent.
+Photographic diagnosis
+Focus: The road, grassy slopes, and distant terrain appear broadly in focus, with no obvious motion blur.
+Lighting: Natural daylight varies across the hills; cloud cover softens the sky, while patches of sunlight brighten parts of the landscape. The exact light direction is uncertain.
+Tonal: Deep olive-green slopes contrast with lighter grass and a pale, clouded sky; shadows retain some terrain detail.
+Optics: The elevated, wide view shows little obvious distortion. Fine landscape detail remains legible across much of the frame; lens or capture specifics cannot be determined.
+Composition: A wide crop layers the nearby slope, winding road, distant ridge, and sky. The road creates a curved visual path through the open terrain.
+Translation to generation instructions
+Focus: Keep the main landscape and its distant features clearly resolved, with natural, gradual loss of detail only at great distance.
+Lighting: Use plausible outdoor daylight filtered by broken clouds; let sunlight fall unevenly across the terrain, with soft-edged shadows and no artificial background gradient.
+Tonal: Balance pale sky highlights against darker greens, retaining texture in the shadowed hills and avoiding oversaturated color.
+Optics: Choose an elevated viewpoint and a moderately wide, natural perspective; preserve realistic detail without added blur or decorative grain.
+Composition: Use a wide landscape frame with distinct foreground, middle distance, and background; guide the eye through the scene without copying the reference’s specific road placement.
+
+
+image 2 prompt:
+generate a quiet, naturalistic landscape image, centered on a small boat resting on still water. The broad sky and distant shoreline give the frame a spacious, contemplative feel; the boat and its reflection draw the eye, with a few buoys adding small points of color.
+Photographic diagnosis
+Focus: The boat and nearby water are clearly defined; the distant shore is softer, while the reflected shapes blur gently in the water.
+Lighting: Warm light appears to come from the right, catching the boat and buoys; the source and exact time of day are uncertain. The open sky provides softer fill.
+Tonal: Cool blue-green water and sky contrast with warm highlights. The foreground water is darker, while highlights on the boat remain visible.
+Optics: The view feels level with the water, with natural perspective and no obvious distortion or pronounced artificial blur.
+Composition: The boat sits left of center beneath a broad open sky; its reflection leads the eye downward, balanced by the low, distant shoreline.
+Translation to generation instructions
+Focus: Keep the main subject and nearby surface clearly resolved; let distant features soften mildly, without strong artificial bokeh.
+Lighting: Use low, warm directional light from camera-right with soft ambient sky fill; let gentle shadows fall across the subject and keep the background naturally lit.
+Tonal: Preserve warm highlights against cool midtones, retain detail in bright surfaces, and allow foreground shadows to stay deeper without crushing them.
+Optics: Use a level, water-height viewpoint and natural perspective; keep edges clean and avoid added grain or blur.
+Composition: Place the subject off-center in a spacious landscape, with a simple reflection or foreground lead-in and generous negative space.
+Core style: A restrained, spacious waterside photograph that pairs cool, quiet tones with warm directional light and a clearly legible focal subject.
+
+
+image 1 prompt:
+generate a clean, staged editorial portrait: a bespectacled man holding an open book gestures toward the empty space beside him. He is placed on the right, leaving generous teal negative space to the left. The plain backdrop and presentation-like pose suggest an illustrative or educational use rather than a candid moment.
+Photographic diagnosis
+Focus: The person, glasses, clothing, and book appear clearly resolved; the background is smooth, with no obvious strong depth blur.
+Lighting: The subject is evenly lit by apparently soft light, with gentle shadows. The exact source and direction are uncertain.
+Tonal: Saturated teal dominates; dark clothing and the book contrast with the backdrop, while facial and shirt highlights remain visible.
+Optics: The view is near eye level with natural-looking perspective and crisp edges; exact lens and capture settings cannot be determined.
+Composition: A waist-up-to-thigh portrait sits to the right of frame, with the gesture and open book directing attention into broad left-side negative space.
+Translation to generation instructions
+Focus: Keep the face, hands, and featured object crisp; retain a smooth, unobtrusive background without forcing artificial bokeh.
+Lighting: Use a broad, soft source near the camera for even facial and clothing detail, with restrained fill and gentle shadows; keep the background simple and evenly lit.
+Tonal: Preserve a saturated background color, readable dark midtones, and controlled highlights without crushing fabric detail.
+Optics: Use a near-eye-level, medium portrait view with natural perspective and clean, consistent detail.
+Composition: Place the subject off-center, leave useful negative space on one side, and use a natural gesture to connect the subject to that space.
+Core style: A crisp, softly lit, color-blocked editorial portrait that pairs an expressive subject with generous clean negative space.
+
+image 4 prompt:
+generate an image that reads as an intimate, casual environmental portrait: the close, direct viewpoint and visible vehicle interior make the moment feel personal rather than formally staged. The face is the clear focus, with eyes and nearby hair sharply rendered; the background remains recognizable instead of dissolving into strong blur.
+Photographic diagnosis
+Focus: Face and loose hair strands are crisp; the roof, rails, and seat remain visible with only mild softening.
+Lighting: The face is evenly lit with gentle shadows; the exact source and direction are uncertain. The background is somewhat brighter at the left.
+Tonal: Warm, natural midtones dominate. Forehead and cheek highlights are bright but retain detail; clothing and seat provide deep blacks.
+Optics: A close, slightly elevated viewpoint gives the face prominence. Perspective feels near-camera, though the lens is unknown; no obvious grain or strong optical effects are visible.
+Composition: Vertical, close framing centers the face below a broad area of roof; surrounding hair and vehicle details add context.
+Translation to generation instructions
+Focus: Keep the eyes and face crisply resolved, with nearby detail clear and only gentle softening in the more distant setting.
+Lighting: As a proposed interpretation, use broad natural daylight from near the camera, with soft shadows and enough ambient fill to keep the background legible.
+Tonal: Preserve warm, believable midtones, detailed skin highlights, and rich dark areas that still show texture.
+Optics: Use a close portrait viewpoint with natural perspective; avoid exaggerated wide-angle distortion, artificial blur, or added grain.
+Composition: Favor a vertical, intimate environmental portrait with the subject prominent and enough surrounding space to establish the setting, without reproducing the source’s specific pose or arrangement.
+Core transferable DNA: A close, unpolished-feeling portrait that prioritizes a sharply rendered face, gentle daylight, warm restrained color, and a clearly readable environment.
+
+image 5 prompt:
+generate a digital illustration, not a photograph, so photographic cues such as lens behavior, optical blur, and physical light sources are not discernible. The image centers on a woman’s right-facing profile; her dark hair opens into a whimsical, layered world of abstract waves, plants, shells, and small sea-life motifs. The treatment combines bold, flowing shapes with fine hand-drawn hatching and speckled textures. A warm palette of coral, ochre, and cream contrasts with deep navy and muted teal. The white background and generous margins keep the intricate hair silhouette legible. Repeated stock-site watermarks and a footer are visible overlays, not part of the illustration’s style.
+Photographic diagnosis
+Focus: The face and decorative hair are rendered with similarly crisp outlines; no photographic focus falloff is visible.
+Lighting: There are no clear light sources or cast shadows; the shading appears graphic and illustrative.
+Tonal: Cream and white provide the lightest areas, navy the deepest, with saturated warm and cool colors carrying most of the visual emphasis.
+Optics: Lens or camera effects are not applicable; edges are clean, with fine drawn marks and stippling adding texture.
+Composition: A large profile occupies the center-right, while the expansive hair forms an irregular, detailed mass against open white space.
+Translation to generation instructions
+Focus: Keep the profile and decorative elements consistently crisp; use no simulated depth-of-field blur.
+Lighting: Use flat, even illustrated color rather than directional photographic lighting or cast shadows.
+Tonal: Balance pale cream and white with deep navy, then use restrained coral, ochre, and teal accents.
+Optics: Favor clean, defined contours and varied hand-drawn hatching or stippling; avoid lens effects and photographic grain.
+Composition: Use a single side-profile portrait with an imaginative, organically shaped decorative area around the head, balanced by open background; create a new arrangement rather than copying this one.
+
+image 6 prompt:
+generate a pixel-art landscape, not a photograph; camera and lens characteristics are therefore not discernible.
+Photographic diagnosis
+Focus: Cloud shapes and hills have similarly crisp, block-edged pixels; depth is suggested by color layers, not blur.
+Lighting: Cloud tops are pale and their undersides cooler and darker, suggesting overhead daylight; a precise light direction is uncertain.
+Tonal: The cyan-blue sky dominates, with pale cloud highlights, muted turquoise shadows, and dark green hills anchoring the bottom.
+Optics: A straight-on, broad landscape view with clean pixel clusters; no visible grain, lens softness, or perspective distortion.
+Composition: The sky occupies most of the frame; cloud bands cross it, while a low horizon and rolling hills form horizontal layers below.
+Translation to generation instructions
+Focus: Keep the pixel edges and cluster shapes consistently crisp; separate distant layers through color and silhouette, not depth-of-field blur.
+Lighting: Use soft daytime illumination, with brighter cloud tops and gently darker undersides; keep the landscape’s lighting subdued and consistent.
+Tonal: Preserve the blue-cyan sky, light cloud highlights, turquoise midtones, and deep green foreground; use a restrained, clean palette without grain.
+Optics: Use a straight-on wide landscape view and deliberate square-pixel rendering; avoid simulated lens effects or perspective distortion.
+Composition: Let open sky carry the scene, place cloud forms in horizontal groupings, and anchor the lower edge with layered terrain; vary the specific arrangement for an original scene.
+Core style: Calm, airy retro pixel art built from crisp color blocks, layered cloud forms, and gently rolling terrain.
+
+image 7 prompt:
+generate an image that is a full-length environmental portrait with a quiet, editorial feel. A woman in a dark dress stands on a wooden chair in shallow surf; the centered figure and chair contrast with the open bands of water, pale sky, and distant mountains. The unusual perch gives the otherwise calm scene a slightly surreal quality.
+Photographic diagnosis
+Focus: The woman and chair are clearly defined; the distant mountains are softer, likely influenced by distance and atmosphere. The subject remains the main focus.
+Lighting: The light appears broad and diffuse, with no strong directional shadows. The water and background are lit much like the subject.
+Tonal: Pale sky and foam are brightest; the dark dress anchors the shadows. Overall contrast and saturation are restrained, with cool blue-gray surroundings.
+Optics: The vertical, full-body view has a natural perspective without obvious distortion. Exact lens or camera distance cannot be determined.
+Composition: The figure and chair sit near the center, framed by generous open space and horizontal shoreline bands; the chair creates a strong vertical accent.
+Translation to generation instructions
+Focus: Keep the person and nearby details clearly resolved; let distant landscape soften gently with distance, not artificial blur.
+Lighting: Use overcast, diffuse daylight with weak shadows and no strongly separated background lighting.
+Tonal: Keep the sky and water pale, preserve detail in dark clothing, and use muted cool colors with moderate contrast.
+Optics: Use a natural-looking viewpoint and perspective for a full-length environmental portrait; avoid exaggerated wide-angle distortion or added grain.
+Composition: Balance a clearly readable subject against open environmental space, using natural landscape lines without copying the original chair-and-surf arrangement.

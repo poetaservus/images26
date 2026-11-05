@@ -333,6 +333,15 @@
             <p class="prompt-status" aria-live="polite"></p>
           </div>
         </figure>
+        <figure data-image="8">
+          <div class="image-frame"><img src="8.png" alt="Casual smartphone selfie portrait of an adult woman with naturally curly black hair" loading="lazy"></div>
+          <button class="prompt-toggle" type="button" aria-expanded="false">Prompt</button>
+          <div class="prompt-panel" hidden role="region" aria-label="Image 8 prompt">
+            <textarea readonly aria-label="Prompt for image 8"></textarea>
+            <button class="prompt-copy" type="button">Copy</button>
+            <p class="prompt-status" aria-live="polite"></p>
+          </div>
+        </figure>
       </div>
     </section>
 
@@ -458,6 +467,14 @@ Lighting: Use overcast, diffuse daylight with weak shadows and no strongly separ
 Tonal: Keep the sky and water pale, preserve detail in dark clothing, and use muted cool colors with moderate contrast.
 Optics: Use a natural-looking viewpoint and perspective for a full-length environmental portrait; avoid exaggerated wide-angle distortion or added grain.
 Composition: Balance a clearly readable subject against open environmental space, using natural landscape lines without copying the original chair-and-surf arrangement.
+
+image 8 prompt:
+Generate an ultra-realistic smartphone selfie of an average-looking adult Asian woman with naturally curly black hair.
+She has ordinary, believable facial features, natural proportions, realistic skin texture, and subtle imperfections. Her appearance is attractive in an everyday, unremarkable way rather than resembling a professional model.
+She wears natural, feminine makeup, including light foundation, blush, mascara, soft eyeshadow, subtle lip liner, and glossy lips.
+The photo is taken with a modern smartphone's front-facing camera. She is centered in the frame, looking directly into the lens at eye level, with a relaxed expression and casual posture.
+Use soft ambient lighting, realistic smartphone image processing, natural colors, and authentic photographic detail. Preserve visible pores, fine facial details, and natural facial asymmetry.
+The result should look like a genuine, casually taken Instagram selfie of a real person, not a professional photoshoot, beauty advertisement, or AI-generated portrait. Avoid excessive retouching, exaggerated beauty standards, plastic-looking skin, and artificial perfection.
 `;
     const promptHeadings = [...promptSource.matchAll(/^[ \t]*image\s+(\d+)\s+prompt:[ \t]*$/gim)];
     const prompts = Object.fromEntries(promptHeadings.map((heading, index) => {
